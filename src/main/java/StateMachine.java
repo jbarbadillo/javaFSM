@@ -16,7 +16,12 @@ public class StateMachine {
 		}
 	};
 	StateMachine(List<String> states, final String initialState, List<String> events, List<List<String>> transitions){
-		
+		for(State state: states){
+			states.put(new State(state));
+		}
+		mEvents = events;
+		for(List<String> transition : transitions){
+		}
 	}
 	public boolean propagateEvent(final String event){
 		
