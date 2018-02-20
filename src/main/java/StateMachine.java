@@ -1,5 +1,9 @@
 public class StateMachine {
 	protected State mCurrentState = null;
+	private List<State> mStates;
+	private List<String> mEvents;
+    boolean started = false;
+    State mInitialState = null;
 	
 	public class State{
 		String name;
@@ -30,5 +34,9 @@ public class StateMachine {
 	
     protected int getStateIndex(final String name){}
     protected boolean existsEvent(final String event){}
-    protected boolean checkValidStates(){}
+    protected boolean checkValidStates(){} 
+	
+	bool setInitialState(const std::string& name);
+	bool addTransition(const std::string&  source, const std::string& event, const std::string& target);
+	
 }
