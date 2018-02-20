@@ -20,7 +20,9 @@ public class StateMachine {
 			states.put(new State(state));
 		}
 		mEvents = events;
+		setInitialState(initialState);
 		for(List<String> transition : transitions){
+			addTransition(transition.get(0),transition.get(1),transition.get(2));
 		}
 	}
 	public boolean propagateEvent(final String event){
