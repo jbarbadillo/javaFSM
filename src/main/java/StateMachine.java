@@ -12,4 +12,16 @@ public class StateMachine {
 	StateMachine(List<String> states, final String initialState, List<String> events, List<List<String>> transitions){
 		
 	}
+	public boolean propagateEvent(final String event){
+		
+	}
+    public State getStateByName(final String name){
+		
+	}
+	public String getCurrentState(){
+		
+	}
+	boolean startFSM(){}
+	boolean updateFSM(){}
+	boolean stopFSM(){}
 }
