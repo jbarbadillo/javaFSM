@@ -1,4 +1,6 @@
 public class StateMachine {
+	protected State mCurrentState = null;
+	
 	public class State{
 		String name;
 		Map<String, State> transitionMap;
@@ -24,4 +26,9 @@ public class StateMachine {
 	boolean startFSM(){}
 	boolean updateFSM(){}
 	boolean stopFSM(){}
+	
+	
+    protected int getStateIndex(final String name){}
+    protected boolean existsEvent(final String event){}
+    protected boolean checkValidStates(){}
 }
