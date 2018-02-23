@@ -78,7 +78,13 @@ public class StateMachine {
         }
         return false;
 	}
-	public boolean stopFSM(){}
+	public boolean stopFSM(){
+		if(started){
+            started = false;
+            return true;
+        }
+        return false;
+	}
 	
 	
     protected int getStateIndex(final String name){
