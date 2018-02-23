@@ -113,13 +113,30 @@ public class StateMachine {
         return true;
 	} 
 	
-	private bool setInitialState(const std::string& name){
+	private boolean setInitialState(const std::string& name){
 		if(getStateByName(name) != null){
             this.mInitialState = getStateByName(name);
             return true;
         }
         return false;
 	}
-	bool addTransition(const std::string&  source, const std::string& event, const std::string& target);
+	private boolean addTransition(const std::string&  source, const std::string& event, const std::string& target){
+		State sourceState = getStateByName(source);
+        State targetState = getStateByName(target);
+
+        boolean existsSource = sourceState != null;
+        boolean existsTarget = targetState != null;
+
+        if(existsSource && existsTarget && existsEvent(event)){
+            if(sourceState.transitionMap.containsKey(event)){
+                return false;
+            }else{
+                sourceState.transitionMap.put(event,targetState);
+                return true;
+            }
+        }else{
+            return false;
+        }
+	}
 	
 }
