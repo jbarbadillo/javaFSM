@@ -11,6 +11,9 @@ import java.util.Map;
  *
  * The constructor will check itself that transitions are valid. The start method checks that the FSM is complete: every state has at least
  * one transition and has a runnable binded.
+ * 
+ * If the FSM is created correctly, the start() method must be called in order to be able to propagate events. Actions will execute automatically.
+ * 
  */
 public class StateMachine {
 	protected State mCurrentState = null;
