@@ -84,8 +84,7 @@ public class StateMachine {
             return true;
         }
         return false;
-	}
-	
+	}	
 	
     protected int getStateIndex(final String name){
 		for(int i = 0; i < mStates.size(); i++){
@@ -95,7 +94,14 @@ public class StateMachine {
         }
         return -1;
 	}
-    protected boolean existsEvent(final String event){}
+    protected boolean existsEvent(final String event){
+		for(String event : mEvents){
+            if(event.matches(name)){
+                return true;
+            }
+        }
+        return false;
+	}
     protected boolean checkValidStates(){} 
 	
 	bool setInitialState(const std::string& name);
