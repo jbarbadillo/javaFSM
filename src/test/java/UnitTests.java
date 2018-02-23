@@ -90,4 +90,26 @@ public class StateMachineTest {
         assertEquals(S_STARTED,fsm.getCurrentStateName());
         assertTrue(changedState);
     }
+	@Test
+    public void update_statemachine_before_start_returns_false(){
+        bindFunctions();
+        assertFalse(fsm.update());
+    }
+    @Test
+    public void update_statemachine_after_start_returns_true(){
+        bindFunctions();
+        fsm.start();
+        assertTrue(fsm.update());
+    }
+    @Test
+    public void stop_statemachine_before_start_returns_false(){
+        bindFunctions();
+        assertFalse(fsm.stop());
+    }
+    @Test
+    public void stop_statemachine_after_start_returns_true(){
+        bindFunctions();
+        fsm.start();
+        assertTrue(fsm.update());
+    }
 }
