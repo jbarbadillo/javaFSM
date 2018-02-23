@@ -20,6 +20,12 @@ public class StateMachine {
 			this.transitionMap = new HashMap<>();
 		}
 	};
+	/**
+	 * @param states		A list with the names of the states
+	 * @param initialState	The name of the initial state. Must be on the list.
+	 * @param events		A list with the name of the events.
+	 * @param transitions 	A list of valid transitions for all states. Every transition is a list itself.
+	 */
 	StateMachine(List<String> states, final String initialState, List<String> events, List<List<String>> transitions){
 		mStates = new LinkedList<>();
         mEvents = new LinkedList<>();
