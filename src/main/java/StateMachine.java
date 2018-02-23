@@ -3,6 +3,15 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This class implements an event driven finite state machine. The state machine must be initialized with the list of states, events
+ * accepted, an initial state and a list of valid transitions. Valid transitions mean transitions between registered states and events. 
+ * Also for a given state events cannot be duplicated as transitions must be unique. It is possible to have several events that triger the same
+ * transition, for example: START->press_stop->STOP and START->timeout->STOP.
+ *
+ * The constructor will check itself that transitions are valid. The start method checks that the FSM is complete: every state has at least
+ * one transition and has a runnable binded.
+ */
 public class StateMachine {
 	protected State mCurrentState = null;
 	private List<State> mStates;
