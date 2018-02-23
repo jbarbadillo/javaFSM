@@ -73,6 +73,11 @@ public class StateMachine {
         }
         return null;
 	}
+	/**	 
+	 * Gets the name of the current State.
+	 *
+	 * @return	The name of the current state if it is not null;
+	 */
 	public String getCurrentStateName(){
 		if(mCurrentState != null){
             return mCurrentState.name;
@@ -80,6 +85,11 @@ public class StateMachine {
             return "";
         }		
 	}
+	/**	 
+	 * Starts the FSM
+	 *
+	 * @return	True if was able to start.
+	 */
 	public boolean startFSM(){
 		if(mInitialState != null && checkValidStates() ){
             if(mCurrentState == null){
@@ -91,6 +101,11 @@ public class StateMachine {
         }
         return false;
 	}
+	/**	 
+	 * Updates the FSM by running actions
+	 *
+	 * @return	True if was able to update.
+	 */
 	public boolean updateFSM(){
 		if(mCurrentState != null && started){
             mCurrentState.actions.run();
@@ -98,6 +113,11 @@ public class StateMachine {
         }
         return false;
 	}
+	/**	 
+	 * Stops the FSM it was started
+	 *
+	 * @return	True if was able to stop.
+	 */
 	public boolean stopFSM(){
 		if(started){
             started = false;
