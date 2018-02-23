@@ -104,7 +104,10 @@ public class StateMachineIntegrationTest {
 
         fsm = new StateMachine(states, S_OUT_OF_ZONE_REMOVED,events,transitions);
     }
-
+	
+	/**
+	 * Bind functions for every state.
+	 */
     public void bindFunctions(){
         fsm.getStateByName(S_OUT_OF_ZONE_REMOVED).actions = outOfZoneRemoved;
         fsm.getStateByName(S_OUT_OFF_ZONE_APPENDED_BLOCK).actions = outOfZoneAppendedBlock;
