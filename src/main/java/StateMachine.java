@@ -1,3 +1,8 @@
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
 public class StateMachine {
 	protected State mCurrentState = null;
 	private List<State> mStates;
@@ -8,21 +13,25 @@ public class StateMachine {
 	public class State{
 		String name;
 		Map<String, State> transitionMap;
-		Runnable function = null;
+		Runnable actions = null;
 		
 		State(final String name){
 			this.name = name;
-			transitionMap = new HashMap<>();
+			this.transitionMap = new HashMap<>();
 		}
 	};
 	StateMachine(List<String> states, final String initialState, List<String> events, List<List<String>> transitions){
+		mStates = new LinkedList<>();
+        mEvents = new LinkedList<>();
 		for(State state: states){
-			states.put(new State(state));
+			states.add(new State(state));
 		}
 		mEvents = events;
-		setInitialState(initialState);
+		this.setInitialState(initialState);
 		for(List<String> transition : transitions){
-			addTransition(transition.get(0),transition.get(1),transition.get(2));
+			if(!addTransition(transition.get(0), transition.get(1), transition.get(2))){
+                System.out.println("DEBUG: " + TAG + ": " + "Cannot add transition: "+transition.get(0)+"+"+transition.get(1)+"->"+transition.get(2));
+            }
 		}
 	}
 	public boolean propagateEvent(final String event){
