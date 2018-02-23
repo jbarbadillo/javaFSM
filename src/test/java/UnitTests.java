@@ -12,11 +12,13 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class StateMachineTest {
+	private final static String TAG = "UnitTests"
 	private StateMachine fsm;
     private final static String S_INITIALIZED = "INITIALIZED";
     private final static String S_STARTED = "STARTED";
     private final static String S_STOPPED = "STOPPED";
     private final static String nextEvent = "next";
+	
 	// Runnable declarations for later binding
 	public Runnable stateInit = new Runnable(){
         @Override
