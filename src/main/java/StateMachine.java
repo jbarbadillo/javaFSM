@@ -102,7 +102,16 @@ public class StateMachine {
         }
         return false;
 	}
-    protected boolean checkValidStates(){} 
+    protected boolean checkValidStates(){
+		for(State state : mStates){
+            boolean invalid = (state.transitionMap.isEmpty() || state.actions==null);
+            if(invalid){
+                System.out.println("DEBUG: " + TAG + ": " + "Invalid state "+ state.name);
+                return false;
+            }
+        }
+        return true;
+	} 
 	
 	bool setInitialState(const std::string& name);
 	bool addTransition(const std::string&  source, const std::string& event, const std::string& target);
