@@ -113,7 +113,13 @@ public class StateMachine {
         return true;
 	} 
 	
-	bool setInitialState(const std::string& name);
+	private bool setInitialState(const std::string& name){
+		if(getStateByName(name) != null){
+            this.mInitialState = getStateByName(name);
+            return true;
+        }
+        return false;
+	}
 	bool addTransition(const std::string&  source, const std::string& event, const std::string& target);
 	
 }
