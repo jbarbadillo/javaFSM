@@ -24,6 +24,7 @@ public class StateMachineIntegrationTest {
     private final static String noBeaconsEvent = "no_beacons";
     private final static String allDevicesOutOfZoneEvent = "all_devices_out_of_zone";
 	
+	// Runnable declarations
 	public Runnable outOfZoneRemoved = new Runnable(){
         @Override
         public void run() {
@@ -64,6 +65,8 @@ public class StateMachineIntegrationTest {
             System.out.println("DEBUG: " + TAG + ": " + S_OUT_OFF_ZONE_APPENDED_BLOCK);
         }
     };
+	
+	// Create FSM before running test.
     @Before
     public void prepareFSM(){
         List<String> states = new LinkedList<>(Arrays.asList(
