@@ -21,6 +21,8 @@ public class StateMachine {
 		}
 	};
 	/**
+	 * Constructor for state machine.
+	 *
 	 * @param states		A list with the names of the states
 	 * @param initialState	The name of the initial state. Must be on the list.
 	 * @param events		A list with the name of the events.
@@ -40,6 +42,12 @@ public class StateMachine {
             }
 		}
 	}
+	/**	 
+	 * Propagates an event if FSM is started.
+	 *
+	 * @param event		The event that will propagate in the FSM
+	 * @return  		True if trigered a transition.
+	 */
 	public boolean propagateEvent(final String event){
 		if(!this.started){
             return false;
@@ -51,6 +59,12 @@ public class StateMachine {
         }
         return false;
 	}
+	/**	 
+	 * Gets a State object by name.
+	 *
+	 * @param name		The name of the State
+	 * @return  		The state if exists. Null if not.
+	 */
     public State getStateByName(final String name){
 		for(State state : mStates){
             if(state.name.matches(name)){
