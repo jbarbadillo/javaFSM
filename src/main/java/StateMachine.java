@@ -60,9 +60,19 @@ public class StateMachine {
             return "";
         }		
 	}
-	boolean startFSM(){}
-	boolean updateFSM(){}
-	boolean stopFSM(){}
+	public boolean startFSM(){
+		if(mInitialState != null && checkValidStates() ){
+            if(mCurrentState == null){
+                mCurrentState = mInitialState;
+            }
+            mCurrentState.actions.run();
+            started = true;
+            return started;
+        }
+        return false;
+	}
+	public boolean updateFSM(){}
+	public boolean stopFSM(){}
 	
 	
     protected int getStateIndex(final String name){
