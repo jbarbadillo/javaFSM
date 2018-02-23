@@ -125,7 +125,12 @@ public class StateMachine {
         }
         return false;
 	}	
-	
+	/**	 
+	 * Returns the index of the state in the state list.
+	 *
+	 * @param 	name	The name of the state
+	 * @return			The index of the state in the list. Returns -1 if the state is not in the FSM.
+	 */
     protected int getStateIndex(final String name){
 		for(int i = 0; i < mStates.size(); i++){
             if(mStates.get(i).name.matches(name)){
@@ -134,6 +139,12 @@ public class StateMachine {
         }
         return -1;
 	}
+	/**	 
+	 * Checks wether an event exists in the FSM
+	 *
+	 * @param 	event	The name of the event
+	 * @return			True if the event already exists
+	 */
     protected boolean existsEvent(final String event){
 		for(String event : mEvents){
             if(event.matches(name)){
