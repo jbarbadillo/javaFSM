@@ -70,4 +70,24 @@ public class StateMachineTest {
         boolean started = fsm.start();
         assertTrue(started);
     }
+	@Test
+    public void propagate_wrong_event_returns_false(){
+        bindFunctions();
+
+        fsm.start();
+        assertEquals(S_INITED,fsm.getCurrentStateName());
+        boolean changedState = fsm.propagateEvent("back");
+        assertEquals(S_INITED,fsm.getCurrentStateName());
+        assertFalse(changedState);
+    }
+    @Test
+    public void propagate_right_event_returns_true(){
+        bindFunctions();
+
+        fsm.start();
+        assertEquals(S_INITED,fsm.getCurrentStateName());
+        boolean changedState = fsm.propagateEvent(nextEvent);
+        assertEquals(S_STARTED,fsm.getCurrentStateName());
+        assertTrue(changedState);
+    }
 }
