@@ -46,7 +46,12 @@ public class StateMachine {
         return false;
 	}
     public State getStateByName(final String name){
-		
+		for(State state : mStates){
+            if(state.name.matches(name)){
+                return state;
+            }
+        }
+        return null;
 	}
 	public String getCurrentState(){
 		
