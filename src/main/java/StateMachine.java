@@ -53,15 +53,26 @@ public class StateMachine {
         }
         return null;
 	}
-	public String getCurrentState(){
-		
+	public String getCurrentStateName(){
+		if(mCurrentState != null){
+            return mCurrentState.name;
+        }else{
+            return "";
+        }		
 	}
 	boolean startFSM(){}
 	boolean updateFSM(){}
 	boolean stopFSM(){}
 	
 	
-    protected int getStateIndex(final String name){}
+    protected int getStateIndex(final String name){
+		for(int i = 0; i < mStates.size(); i++){
+            if(mStates.get(i).name.matches(name)){
+                return i;
+            }
+        }
+        return -1;
+	}
     protected boolean existsEvent(final String event){}
     protected boolean checkValidStates(){} 
 	
