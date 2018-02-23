@@ -35,7 +35,15 @@ public class StateMachine {
 		}
 	}
 	public boolean propagateEvent(final String event){
-		
+		if(!this.started){
+            return false;
+        }
+        if(mCurrentState.transitionMap.containsKey(event)){
+            mCurrentState = mCurrentState.transitionMap.get(event);
+            mCurrentState.actions.run();
+            return true;
+        }
+        return false;
 	}
     public State getStateByName(final String name){
 		
