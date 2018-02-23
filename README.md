@@ -47,18 +47,18 @@ public class MyApp {
     };
 	private startFSM(){
 		List<String> states = new LinkedList<>(Arrays.asList(
-                S_ONE,
-                S_TWO));
+				S_ONE,
+				S_TWO));
 		List<String> events = new LinkedList<>(Arrays.asList(
-                change));
-        List<List<String>> transitions = new LinkedList<>();
+				change));
+		List<List<String>> transitions = new LinkedList<>();
 		transitions.add(new LinkedList<String>(Arrays.asList(S_ONE,change,S_TWO)));
-        transitions.add(new LinkedList<String>(Arrays.asList(S_TWO,change,S_ONE)));
+		transitions.add(new LinkedList<String>(Arrays.asList(S_TWO,change,S_ONE)));
 		
 		fsm = new StateMachine(states, S_ONE,events,transitions);
 		
 		fsm.getStateByName(S_ONE).actions = one;
-        fsm.getStateByName(S_TWO).actions = two;
+		fsm.getStateByName(S_TWO).actions = two;
 		
 		fsm.start();
 		
