@@ -71,7 +71,13 @@ public class StateMachine {
         }
         return false;
 	}
-	public boolean updateFSM(){}
+	public boolean updateFSM(){
+		if(mCurrentState != null && started){
+            mCurrentState.actions.run();
+            return true;
+        }
+        return false;
+	}
 	public boolean stopFSM(){}
 	
 	
