@@ -60,8 +60,10 @@ public class MyApp {
 		fsm.getStateByName(S_ONE).actions = one;
 		fsm.getStateByName(S_TWO).actions = two;
 		
+		// Firs start your state machine
 		fsm.start();
 		
+		// Propagate events as you want.
 		fsm.propagateEvent(change);
 		fsm.propagateEvent(change);
 		fsm.propagateEvent(change);
