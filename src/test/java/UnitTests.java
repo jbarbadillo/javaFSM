@@ -48,6 +48,10 @@ public class StateMachineTest {
         fsm.getStateByName(S_STARTED).actions = stateStart;
         fsm.getStateByName(S_STOPPED).actions = stateStop;
     }
+	
+	/**
+	 * Creates the FSM before unit tests
+	 */
 	@Before
     public void prepareFSM(){
         List<String> states = new LinkedList<>(Arrays.asList(S_INITIALIZED,S_STARTED,S_STOPPED));
