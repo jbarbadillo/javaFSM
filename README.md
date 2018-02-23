@@ -29,22 +29,22 @@ You can create a FSM, bind functions and propagate events to see how functions a
 public class MyApp {
 	private StateMachine fsm;
 	private final static String S_ONE = "ONE";
-    private final static String S_TWO = "TWO";
+	private final static String S_TWO = "TWO";
 	private final static String change = "change";
 	
 	// Runnable declarations
 	public Runnable one = new Runnable(){
-        @Override
-        public void run() {
-            System.out.println("DEBUG: " + TAG + ": " + S_ONE);
-        }
-    };
-    public Runnable two = new Runnable(){
-        @Override
-        public void run() {
-            System.out.println("DEBUG: " + TAG + ": " + S_TWO);
-        }
-    };
+		@Override
+		public void run() {
+			System.out.println("DEBUG: " + TAG + ": " + S_ONE);
+		}
+	};
+	public Runnable two = new Runnable(){
+		@Override
+		public void run() {
+			System.out.println("DEBUG: " + TAG + ": " + S_TWO);
+		}
+	};
 	private startFSM(){
 		List<String> states = new LinkedList<>(Arrays.asList(
 				S_ONE,
