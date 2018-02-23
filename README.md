@@ -62,7 +62,11 @@ public class MyApp {
 		
 		fsm.start();
 		
-		
+		fsm.propagateEvent(change);
+		fsm.propagateEvent(change);
+		fsm.propagateEvent(change);
+		fsm.propagateEvent(change);
+		fsm.propagateEvent(change);
 	}
 }
 ```
