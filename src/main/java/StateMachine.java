@@ -153,6 +153,11 @@ public class StateMachine {
         }
         return false;
 	}
+	/**	 
+	 * Checks that states are correct. All have at least a transition and an action.
+	 *
+	 * @return	True if states are valid for a FSM
+	 */
     protected boolean checkValidStates(){
 		for(State state : mStates){
             boolean invalid = (state.transitionMap.isEmpty() || state.actions==null);
@@ -163,7 +168,12 @@ public class StateMachine {
         }
         return true;
 	} 
-	
+	/**	 
+	 * Sets the initialState of the FSM
+	 *
+	 * @param 	name	The name of the initialState
+	 * @return			True if the state exists and was correctly set
+	 */
 	private boolean setInitialState(const std::string& name){
 		if(getStateByName(name) != null){
             this.mInitialState = getStateByName(name);
@@ -171,6 +181,14 @@ public class StateMachine {
         }
         return false;
 	}
+	/**	 
+	 * Adds a transition to the source state.
+	 *
+	 * @param 	source	The name of the source state
+	 * @param 	event	The name of the event
+	 * @param 	target	The name of the target state
+	 * @return			True if transition added correctly
+	 */
 	private boolean addTransition(const std::string&  source, const std::string& event, const std::string& target){
 		State sourceState = getStateByName(source);
         State targetState = getStateByName(target);
