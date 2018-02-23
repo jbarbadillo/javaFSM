@@ -112,4 +112,20 @@ public class StateMachineTest {
         fsm.start();
         assertTrue(fsm.update());
     }
+	@Test
+    public void get_non_existing_state_returns_null(){
+        assertNull(fsm.getStateByName("NULL"));
+
+    }
+    @Test
+    public void get_state_returns_object_of_type_state(){
+        assertTrue(fsm.getStateByName(S_STARTED) instanceof StateMachine.State);
+    }
+    @Test
+    public void get_state_index_returns_right_order(){
+        assertEquals(0, fsm.getStateIndex(S_INITED));
+        assertEquals(1, fsm.getStateIndex(S_STARTED));
+        assertEquals(2, fsm.getStateIndex(S_STOPPED));
+        assertEquals(-1, fsm.getStateIndex("NULL"));
+    }
 }
