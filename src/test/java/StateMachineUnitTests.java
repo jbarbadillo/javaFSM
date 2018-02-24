@@ -70,6 +70,11 @@ public class StateMachineUnitTests {
         assertFalse(started);
     }
     @Test
+    public void propagate_event_before_start_returns_false(){
+        boolean changed = fsm.propagateEvent(nextEvent);
+        assertFalse(changed);
+    }
+    @Test
     public void create_statemachine_with_functions_returns_true_on_start(){
         bindFunctions();
 
