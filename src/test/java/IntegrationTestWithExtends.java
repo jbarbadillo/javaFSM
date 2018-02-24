@@ -118,12 +118,15 @@ public class IntegrationTestWithExtends {
 
         assertTrue(menu.stop());
 
+        assertFalse(menu.update());
+
         assertFalse(menu.propagateEvent(click3));
 
         assertTrue(menu.start());
 
         assertTrue(menu.propagateEvent(click1));
         assertEquals(S_MENU1, menu.getCurrentStateName());
+
     }
 
 }
