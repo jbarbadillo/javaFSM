@@ -21,7 +21,11 @@ public class StateMachine {
 	private List<String> mEvents;
     boolean started = false;
     State mInitialState = null;
-	
+
+
+    public static void main (String[] args){
+        System.out.println("Shit");
+    }
 	public class State{
 		String name;
 		Map<String, State> transitionMap;
@@ -31,7 +35,7 @@ public class StateMachine {
 			this.name = name;
 			this.transitionMap = new HashMap<>();
 		}
-	};
+	}
 	/**
 	 * Constructor for state machine.
 	 *
@@ -157,7 +161,7 @@ public class StateMachine {
 	 * @param 	event	The name of the event
 	 * @return			True if the event already exists
 	 */
-    protected boolean existsEvent(final String event){
+    protected boolean existsEvent(final String name){
 		for(String event : mEvents){
             if(event.matches(name)){
                 return true;
