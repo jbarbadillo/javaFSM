@@ -76,6 +76,23 @@ public class StateMachineUnitTests {
         boolean started = fsm.start();
         assertTrue(started);
     }
+    @Test
+    public void create_statemachine_with_wrong_transition_does_not_add_transition(){
+        List<String> states = new LinkedList<>(Arrays.asList(S_INITIALIZED,S_STARTED,S_STOPPED));
+        List<String> events = new LinkedList<>(Arrays.asList(nextEvent));
+        List<List<String>> transitions = new LinkedList<>();
+        transitions.add(new LinkedList<String>(Arrays.asList(S_INITIALIZED,nextEvent,S_STARTED)));
+        transitions.add(new LinkedList<String>(Arrays.asList(S_STARTED,nextEvent,S_STOPPED)));
+        transitions.add(new LinkedList<String>(Arrays.asList(S_STOPPED,nextEvent,S_INITIALIZED)));
+        transitions.add(new LinkedList<String>(Arrays.asList(S_STOPPED,"unadded_event",S_INITIALIZED)));
+
+        fsm = new StateMachine(states, S_INITIALIZED,events,transitions);
+        bindFunctions();
+
+        fsm.start();
+        boolean changed = fsm.propagateEvent("unadded_event");
+        assertFalse(changed);
+    }
 
     private void assertTrue(boolean started) {
     }
