@@ -1,3 +1,7 @@
+import org.junit.Before;
+
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class IntegrationTestWithExtends {
@@ -26,5 +30,34 @@ public class IntegrationTestWithExtends {
         MenuStateMachine(List<String> states, String initialState, List<String> events, List<List<String>> transitions) {
             super(states, initialState, events, transitions);
         }
+        public void init(){
+            List<String> states = new LinkedList<>(Arrays.asList(
+                    S_MENU1, S_MENU2, S_MENU3, S_MENU4));
+            List<String> events = new LinkedList<>(Arrays.asList(
+                    click1, click2, click3, click4
+            ));
+            List<List<String>> transitions = new LinkedList<>();
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU1,click2,S_MENU2)));
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU1,click3,S_MENU3)));
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU1,click4,S_MENU4)));
+
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU2,click1,S_MENU1)));
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU2,click3,S_MENU3)));
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU2,click4,S_MENU4)));
+
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU3,click1,S_MENU1)));
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU3,click2,S_MENU2)));
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU3,click4,S_MENU4)));
+
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU4,click2,S_MENU2)));
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU4,click3,S_MENU3)));
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU4,click1,S_MENU1)));
+
+
+        }
+    }
+    @Before
+    public void instantiateMenuStateMachine(){
+        MenuStateMachine menu = new MenuStateMachine();
     }
 }
