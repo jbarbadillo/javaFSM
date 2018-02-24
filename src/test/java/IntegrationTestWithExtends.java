@@ -87,7 +87,9 @@ public class IntegrationTestWithExtends {
             transitions.add(new LinkedList<String>(Arrays.asList(S_MENU4,click3,S_MENU3)));
             transitions.add(new LinkedList<String>(Arrays.asList(S_MENU4,click1,S_MENU1)));
 
-            return new MenuStateMachine(states, S_MENU1, events, transitions);
+            MenuStateMachine menu = new MenuStateMachine(states, S_MENU1, events, transitions);
+            menu.bindMethods();
+            return menu;
         }
     }
     @Before
