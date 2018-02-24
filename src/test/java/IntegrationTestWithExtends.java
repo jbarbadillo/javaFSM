@@ -22,8 +22,6 @@ public class IntegrationTestWithExtends {
 
     public class MenuStateMachine extends StateMachine{
         MenuStateMachine(){
-
-
         }
         /**
          * Constructor for state machine.
@@ -35,6 +33,33 @@ public class IntegrationTestWithExtends {
          */
         MenuStateMachine(List<String> states, String initialState, List<String> events, List<List<String>> transitions) {
             super(states, initialState, events, transitions);
+        }
+        public Runnable menu1 = new Runnable(){
+            @Override
+            public void run() {
+                System.out.println("DEBUG: " + TAG + ": Render menu 1");
+            }
+        };
+        public Runnable menu2 = new Runnable(){
+            @Override
+            public void run() {
+                System.out.println("DEBUG: " + TAG + ": Render menu 2");
+            }
+        };
+        public Runnable menu3 = new Runnable(){
+            @Override
+            public void run() {
+                System.out.println("DEBUG: " + TAG + ": Render menu 3");
+            }
+        };
+        public Runnable menu4 = new Runnable(){
+            @Override
+            public void run() {
+                System.out.println("DEBUG: " + TAG + ": Render menu 4");
+            }
+        };
+        public void bindMethods(){
+            
         }
         public MenuStateMachine init(){
             List<String> states = new LinkedList<>(Arrays.asList(
