@@ -113,6 +113,8 @@ public class IntegrationTestWithExtends {
 
         assertFalse(menu.propagateEvent(click3));
         assertEquals(S_MENU3, menu.getCurrentStateName());
+
+        assertTrue(menu.update());
     }
 
 }
