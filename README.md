@@ -72,3 +72,5 @@ public class MyApp {
 	}
 }
 ```
+
+> Example 2: Create a class that extends StateMachine.
