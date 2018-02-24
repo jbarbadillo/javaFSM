@@ -7,6 +7,7 @@ import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 public class IntegrationTestWithExtends {
     private final static String TAG = "IntegrationTestWithExtends";
@@ -103,6 +104,15 @@ public class IntegrationTestWithExtends {
 
         assertTrue(menu.propagateEvent(click4));
         assertEquals(S_MENU4, menu.getCurrentStateName());
+
+        assertTrue(menu.propagateEvent(click2));
+        assertEquals(S_MENU2, menu.getCurrentStateName());
+
+        assertTrue(menu.propagateEvent(click3));
+        assertEquals(S_MENU3, menu.getCurrentStateName());
+
+        assertFalse(menu.propagateEvent(click3));
+        assertEquals(S_MENU3, menu.getCurrentStateName());
     }
 
 }
