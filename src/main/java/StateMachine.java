@@ -48,8 +48,8 @@ public class StateMachine {
 	StateMachine(List<String> states, final String initialState, List<String> events, List<List<String>> transitions){
 		mStates = new LinkedList<>();
         mEvents = new LinkedList<>();
-		for(State state: states){
-			states.add(new State(state));
+		for(String state: states){
+            mStates.add(new State(state));
 		}
 		mEvents = events;
 		this.setInitialState(initialState);
