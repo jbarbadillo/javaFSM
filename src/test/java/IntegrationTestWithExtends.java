@@ -59,7 +59,10 @@ public class IntegrationTestWithExtends {
             }
         };
         public void bindMethods(){
-            
+            this.getStateByName(S_MENU1).actions = menu1;
+            this.getStateByName(S_MENU2).actions = menu2;
+            this.getStateByName(S_MENU3).actions = menu3;
+            this.getStateByName(S_MENU4).actions = menu4;
         }
         public MenuStateMachine init(){
             List<String> states = new LinkedList<>(Arrays.asList(
