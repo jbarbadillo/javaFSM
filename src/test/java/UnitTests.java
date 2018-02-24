@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 
 public class StateMachineTest {
-	private final static String TAG = "UnitTests"
+	private final static String TAG = "UnitTests";
 	private StateMachine fsm;
     private final static String S_INITIALIZED = "INITIALIZED";
     private final static String S_STARTED = "STARTED";
@@ -85,9 +85,9 @@ public class StateMachineTest {
         bindFunctions();
 
         fsm.start();
-        assertEquals(S_INITED,fsm.getCurrentStateName());
+        assertEquals(S_INITIALIZED,fsm.getCurrentStateName());
         boolean changedState = fsm.propagateEvent("back");
-        assertEquals(S_INITED,fsm.getCurrentStateName());
+        assertEquals(S_INITIALIZED,fsm.getCurrentStateName());
         assertFalse(changedState);
     }
     @Test
@@ -95,7 +95,7 @@ public class StateMachineTest {
         bindFunctions();
 
         fsm.start();
-        assertEquals(S_INITED,fsm.getCurrentStateName());
+        assertEquals(S_INITIALIZED,fsm.getCurrentStateName());
         boolean changedState = fsm.propagateEvent(nextEvent);
         assertEquals(S_STARTED,fsm.getCurrentStateName());
         assertTrue(changedState);
@@ -133,7 +133,7 @@ public class StateMachineTest {
     }
     @Test
     public void get_state_index_returns_right_order(){
-        assertEquals(0, fsm.getStateIndex(S_INITED));
+        assertEquals(0, fsm.getStateIndex(S_INITIALIZED));
         assertEquals(1, fsm.getStateIndex(S_STARTED));
         assertEquals(2, fsm.getStateIndex(S_STOPPED));
         assertEquals(-1, fsm.getStateIndex("NULL"));
