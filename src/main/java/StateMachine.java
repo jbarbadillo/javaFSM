@@ -16,6 +16,7 @@ import java.util.Map;
  * 
  */
 public class StateMachine {
+    private  final static String TAG = "StateMachine";
 	protected State mCurrentState = null;
 	private List<State> mStates;
 	private List<String> mEvents;
