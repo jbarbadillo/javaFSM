@@ -107,7 +107,7 @@ public class StateMachine {
 	 *
 	 * @return	True if was able to start.
 	 */
-	public boolean startFSM(){
+	public boolean start(){
 		if(mInitialState != null && checkValidStates() ){
             if(mCurrentState == null){
                 mCurrentState = mInitialState;
@@ -123,7 +123,7 @@ public class StateMachine {
 	 *
 	 * @return	True if was able to update.
 	 */
-	public boolean updateFSM(){
+	public boolean update(){
 		if(mCurrentState != null && started){
             mCurrentState.actions.run();
             return true;
@@ -135,7 +135,7 @@ public class StateMachine {
 	 *
 	 * @return	True if was able to stop.
 	 */
-	public boolean stopFSM(){
+	public boolean stop(){
 		if(started){
             started = false;
             return true;
