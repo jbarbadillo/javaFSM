@@ -75,6 +75,11 @@ public class StateMachineUnitTests {
         assertFalse(changed);
     }
     @Test
+    public void get_current_state_before_start_fsm_returns_empty(){
+	    String state = fsm.getCurrentStateName();
+	    assertEquals("",state);
+    }
+    @Test
     public void create_statemachine_with_functions_returns_true_on_start(){
         bindFunctions();
 
@@ -142,7 +147,7 @@ public class StateMachineUnitTests {
     public void stop_statemachine_after_start_returns_true(){
         bindFunctions();
         fsm.start();
-        assertTrue(fsm.update());
+        assertTrue(fsm.stop());
     }
 	@Test
     public void get_non_existing_state_returns_null(){
@@ -159,5 +164,10 @@ public class StateMachineUnitTests {
         assertEquals(1, fsm.getStateIndex(S_STARTED));
         assertEquals(2, fsm.getStateIndex(S_STOPPED));
         assertEquals(-1, fsm.getStateIndex("NULL"));
+    }
+    @Test
+    public void set_initial_state_of_invalid_state_returns_false(){
+	    boolean set = fsm.setInitialState("");
+	    assertFalse(set);
     }
 }

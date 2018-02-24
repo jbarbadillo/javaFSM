@@ -187,7 +187,7 @@ public class StateMachine {
 	 * @param 	name	The name of the initialState
 	 * @return			True if the state exists and was correctly set
 	 */
-	private boolean setInitialState(final String name){
+    boolean setInitialState(final String name){
 		if(getStateByName(name) != null){
             this.mInitialState = getStateByName(name);
             return true;
