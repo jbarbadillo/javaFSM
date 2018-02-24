@@ -23,10 +23,6 @@ public class StateMachine {
     boolean started = false;
     State mInitialState = null;
 
-
-    public static void main (String[] args){
-        System.out.println("Shit");
-    }
 	public class State{
 		String name;
 		Map<String, State> transitionMap;
