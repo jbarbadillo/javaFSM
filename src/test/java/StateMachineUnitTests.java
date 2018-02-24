@@ -11,7 +11,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertEquals;
 
 
-public class StateMachineTest {
+public class StateMachineUnitTests {
 	private final static String TAG = "UnitTests";
 	private StateMachine fsm;
     private final static String S_INITIALIZED = "INITIALIZED";
