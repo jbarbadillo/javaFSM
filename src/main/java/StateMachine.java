@@ -159,7 +159,7 @@ public class StateMachine {
 	/**	 
 	 * Checks wether an event exists in the FSM
 	 *
-	 * @param 	event	The name of the event
+	 * @param 	name	The name of the event
 	 * @return			True if the event already exists
 	 */
     protected boolean existsEvent(final String name){
@@ -191,7 +191,7 @@ public class StateMachine {
 	 * @param 	name	The name of the initialState
 	 * @return			True if the state exists and was correctly set
 	 */
-	private boolean setInitialState(const std::string& name){
+	private boolean setInitialState(final String name){
 		if(getStateByName(name) != null){
             this.mInitialState = getStateByName(name);
             return true;
@@ -206,7 +206,7 @@ public class StateMachine {
 	 * @param 	target	The name of the target state
 	 * @return			True if transition added correctly
 	 */
-	private boolean addTransition(const std::string&  source, const std::string& event, const std::string& target){
+	private boolean addTransition(final String  source, final String event, final String target){
 		State sourceState = getStateByName(source);
         State targetState = getStateByName(target);
 
