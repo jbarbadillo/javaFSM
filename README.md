@@ -74,3 +74,80 @@ public class MyApp {
 ```
 
 > Example 2: Create a class that extends StateMachine.
+
+You can create a class that extends from StateMachine
+
+```java
+public class MenuStateMachine extends StateMachine{
+        MenuStateMachine(){
+        }
+        /**
+         * Constructor for state machine.
+         *
+         * @param states       A list with the names of the states
+         * @param initialState The name of the initial state. Must be on the list.
+         * @param events       A list with the name of the events.
+         * @param transitions  A list of valid transitions for all states. Every transition is a list itself.
+         */
+        MenuStateMachine(List<String> states, String initialState, List<String> events, List<List<String>> transitions) {
+            super(states, initialState, events, transitions);
+        }
+        public Runnable menu1 = new Runnable(){
+            @Override
+            public void run() {
+                System.out.println("DEBUG: " + TAG + ": Render menu 1");
+            }
+        };
+        public Runnable menu2 = new Runnable(){
+            @Override
+            public void run() {
+                System.out.println("DEBUG: " + TAG + ": Render menu 2");
+            }
+        };
+        public Runnable menu3 = new Runnable(){
+            @Override
+            public void run() {
+                System.out.println("DEBUG: " + TAG + ": Render menu 3");
+            }
+        };
+        public Runnable menu4 = new Runnable(){
+            @Override
+            public void run() {
+                System.out.println("DEBUG: " + TAG + ": Render menu 4");
+            }
+        };
+        public void bindMethods(){
+            this.getStateByName(S_MENU1).actions = menu1;
+            this.getStateByName(S_MENU2).actions = menu2;
+            this.getStateByName(S_MENU3).actions = menu3;
+            this.getStateByName(S_MENU4).actions = menu4;
+        }
+        public MenuStateMachine init(){
+            List<String> states = new LinkedList<>(Arrays.asList(
+                    S_MENU1, S_MENU2, S_MENU3, S_MENU4));
+            List<String> events = new LinkedList<>(Arrays.asList(
+                    click1, click2, click3, click4
+            ));
+            List<List<String>> transitions = new LinkedList<>();
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU1,click2,S_MENU2)));
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU1,click3,S_MENU3)));
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU1,click4,S_MENU4)));
+
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU2,click1,S_MENU1)));
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU2,click3,S_MENU3)));
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU2,click4,S_MENU4)));
+
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU3,click1,S_MENU1)));
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU3,click2,S_MENU2)));
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU3,click4,S_MENU4)));
+
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU4,click2,S_MENU2)));
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU4,click3,S_MENU3)));
+            transitions.add(new LinkedList<String>(Arrays.asList(S_MENU4,click1,S_MENU1)));
+
+            MenuStateMachine menu = new MenuStateMachine(states, S_MENU1, events, transitions);
+            menu.bindMethods();
+            return menu;
+        }
+    }
+```
