@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
 public class IntegrationTestWithExtends {
@@ -99,6 +100,9 @@ public class IntegrationTestWithExtends {
     @Test
     public void test_class_estends_state_machine(){
         assertTrue(menu.start());
+
+        assertTrue(menu.propagateEvent(click4));
+        assertEquals(S_MENU4, menu.getCurrentStateName());
     }
 
 }
