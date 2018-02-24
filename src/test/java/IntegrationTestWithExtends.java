@@ -6,7 +6,7 @@ import java.util.List;
 
 public class IntegrationTestWithExtends {
     private final static String TAG = "IntegrationTestWithExtends";
-    private StateMachine fsm;
+    private MenuStateMachine menu;
     private final static String S_MENU1 = "MENU1";
     private final static String S_MENU2 = "MENU2";
     private final static String S_MENU3 = "MENU3";
@@ -18,7 +18,10 @@ public class IntegrationTestWithExtends {
     private final static String click4 = "click4";
 
     public class MenuStateMachine extends StateMachine{
+        MenuStateMachine(){
 
+
+        }
         /**
          * Constructor for state machine.
          *
@@ -30,7 +33,7 @@ public class IntegrationTestWithExtends {
         MenuStateMachine(List<String> states, String initialState, List<String> events, List<List<String>> transitions) {
             super(states, initialState, events, transitions);
         }
-        public void init(){
+        public MenuStateMachine init(){
             List<String> states = new LinkedList<>(Arrays.asList(
                     S_MENU1, S_MENU2, S_MENU3, S_MENU4));
             List<String> events = new LinkedList<>(Arrays.asList(
@@ -53,11 +56,12 @@ public class IntegrationTestWithExtends {
             transitions.add(new LinkedList<String>(Arrays.asList(S_MENU4,click3,S_MENU3)));
             transitions.add(new LinkedList<String>(Arrays.asList(S_MENU4,click1,S_MENU1)));
 
-
+            return new MenuStateMachine(states, S_MENU1, events, transitions);
         }
     }
     @Before
     public void instantiateMenuStateMachine(){
-        MenuStateMachine menu = new MenuStateMachine();
+        menu = new MenuStateMachine().init();
     }
+    
 }

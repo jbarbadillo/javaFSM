@@ -23,7 +23,10 @@ public class StateMachine {
     boolean started = false;
     State mInitialState = null;
 
-	public class State{
+    public StateMachine() {
+    }
+
+    public class State{
 		String name;
 		Map<String, State> transitionMap;
 		Runnable actions = null;
