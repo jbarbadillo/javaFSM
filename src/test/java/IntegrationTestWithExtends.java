@@ -1,8 +1,11 @@
 import org.junit.Before;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+
+import static junit.framework.TestCase.assertTrue;
 
 public class IntegrationTestWithExtends {
     private final static String TAG = "IntegrationTestWithExtends";
@@ -63,5 +66,9 @@ public class IntegrationTestWithExtends {
     public void instantiateMenuStateMachine(){
         menu = new MenuStateMachine().init();
     }
-    
+    @Test
+    public void test_class_estends_state_machine(){
+        assertTrue(menu.start());
+    }
+
 }
