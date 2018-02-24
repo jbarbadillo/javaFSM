@@ -10,7 +10,7 @@ import static junit.framework.Assert.assertTrue;
 import static junit.framework.TestCase.assertFalse;
 
 public class StateMachineIntegrationTest {
-    private final static String TAG = "IntegrationTest";
+    private final static String TAG = "StateMachineIntegrationTest";
 	private StateMachine fsm;
     private final static String S_OUT_OF_ZONE_REMOVED = "OUT_OF_ZONE_REMOVED";
     private final static String S_APPENDING = "APPENDING";
