@@ -7,6 +7,7 @@ import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
+import static junit.framework.TestCase.assertFalse;
 
 public class StateMachineIntegrationTest {
     private final static String TAG = "IntegrationTest";
@@ -153,5 +154,14 @@ public class StateMachineIntegrationTest {
 
         assertTrue(fsm.propagateEvent(deviceInZoneEvent));
         assertEquals(S_IN_ZONE_APPENDED_BLOCK, fsm.getCurrentStateName());
+
+        assertTrue(fsm.stop());
+        assertFalse(fsm.update());
+
+        assertTrue(fsm.start());
+        assertTrue(fsm.update());
+
+        int indx =  fsm.getStateIndex(S_IN_ZONE_APPENDED);
+        assertEquals(5, indx);
     }
 }
